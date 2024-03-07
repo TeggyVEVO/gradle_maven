@@ -39,10 +39,3 @@ jobs:
     - name: Build with Gradle Wrapper
       run: ./gradlew build
 
-      
-  publish:
-     needs: build
-     runs-on: ${{matrix.os}}
-     strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest ]
