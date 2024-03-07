@@ -19,7 +19,7 @@ jobs:
     runs-on: ${{matrix.os}}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, masOS-latest ]
+        os: [ubuntu-latest, windows-latest, macOS-latest ]
     permissions:
       contents: read
 
@@ -31,12 +31,15 @@ jobs:
         java-version: 1.8
         distribution: 'temurin'
 
-    # Configure Gradle for optimal use in GiHub Actions, including caching of downloaded dependencies.
+    # Configure Gradle for optimal use in GitHub Actions, including caching of downloaded dependencies.
     # See: https://github.com/gradle/actions/blob/main/setup-gradle/README.md
     - name: grant execute permission for gradle
       run: chmod +x gradlew
 
     - name: Build with Gradle Wrapper
       run: ./gradlew build
+
+      
   publish:
-    needs: build 
+
+     needs: build 
